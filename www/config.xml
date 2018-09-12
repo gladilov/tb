@@ -160,4 +160,5 @@
         <!--<allow-intent href="itms-apps:*" />-->
     <!--</platform>-->
 
+    <edit-config file="app/src/main/AndroidManifest.xml" target="/manifest/application" mode="merge"/>
 </widget>
