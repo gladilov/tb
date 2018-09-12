@@ -38,8 +38,12 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 
+        // camera test
         pictureSource = navigator.camera.PictureSourceType;
         destinationType = navigator.camera.DestinationType;
+
+        // camera preview test
+        // app.cameraPreviewTest();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -51,6 +55,97 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+
+    cameraPreviewTest: function() {
+        var options = {
+            x: 0,
+            y: 0,
+            width: window.screen.width,
+            height: window.screen.height,
+            camera: CameraPreview.CAMERA_DIRECTION.FRONT,
+            toBack: true,
+            tapPhoto: true,
+            tapFocus: true,
+            previewDrag: false
+        };
+
+        var flash_mode = 'off';
+        // Take a look at docs: https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview#methods
+        CameraPreview.startCamera(options);
+
+
+        // Create a rectangle & buttons
+        var rect = document.createElement('div');
+        var take_pic_btn = document.createElement('img');
+        var flash_on_btn = document.createElement('img');
+        var flash_off_btn = document.createElement('img');
+        var cameraPreviewImg = document.createElement('img');
+
+        cameraPreviewImg.id = 'cameraPreviewImg';
+        cameraPreviewImg.style.visibility = 'hidden';
+
+        // You must specify path relative to www folder
+        take_pic_btn.src = 'img/take_photo.png';
+        flash_on_btn.src = 'img/flash_on.svg';
+        flash_off_btn.src = 'img/flash_off.svg';
+
+        // Add styles
+        rect.className += 'rect_class';
+        take_pic_btn.className += ' take_pic_class';
+        flash_on_btn.className += ' flash_class';
+        flash_off_btn.className += ' flash_class';
+
+        // Hide flash_off btn by default
+        flash_off_btn.style.visibility = 'hidden';
+
+        // Append to body section
+        document.body.appendChild(rect);
+        document.body.appendChild(take_pic_btn);
+        document.body.appendChild(flash_on_btn);
+        document.body.appendChild(flash_off_btn);
+        document.body.appendChild(cameraPreviewImg);
+
+        // Get rectangle coordinates
+        var rect_coords = rect.getBoundingClientRect();
+        var x_coord = rect_coords.left, y_coord = rect_coords.top;
+
+        take_pic_btn.onclick = function(){
+            // Get rectangle size
+            var rect_width = rect.offsetWidth, rect_height = rect.offsetHeight;
+
+            CameraPreview.takePicture(function(base64PictureData) {
+                /*
+                base64PictureData is base64 encoded jpeg image. Use this data to store to a file or upload.
+                Its up to the you to figure out the best way to save it to disk or whatever for your application.
+                */
+
+                // One simple example is if you are going to use it inside an HTML img src attribute then you would do the following:
+                imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
+                cameraPreviewImg.src = imageSrcData;
+
+                rect.style.visibility = 'hidden';
+                take_pic_btn.style.visibility = 'hidden';
+                flash_on_btn.style.visibility = 'hidden';
+                flash_off_btn.style.visibility = 'hidden';
+            });
+        };
+
+        flash_on_btn.onclick = function() {
+            flash_mode = 'on';
+            flash_off_btn.style.visibility = 'visible';
+            flash_on_btn.style.visibility = 'hidden';
+
+            CameraPreview.setFlashMode(flash_mode);
+        }
+
+        flash_off_btn.onclick = function() {
+            flash_mode = 'off';
+            flash_off_btn.style.visibility = 'hidden';
+            flash_on_btn.style.visibility = 'visible';
+
+            CameraPreview.setFlashMode(flash_mode);
+        }
     }
 };
 
@@ -124,4 +219,8 @@ var app = {
     //
     function onFail(message) {
       alert('Failed because: ' + message);
+    }
+
+    function cameraPreview() {
+      app.cameraPreviewTest();
     }
