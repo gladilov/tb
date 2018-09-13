@@ -83,9 +83,9 @@ var app = {
 
         // Create a rectangle & buttons
         var take_pic_btn = document.createElement('img');
-        var cameraPreviewImg = document.createElement('img');
-
-        cameraPreviewImg.id = 'cameraPreviewImg';
+        // var cameraPreviewImg = document.createElement('img');
+        // cameraPreviewImg.id = 'cameraPreviewImg';
+        var cameraPreviewImg = document.getElementById('cameraPreviewImg');
 
         take_pic_btn.src = 'img/cameraPreview/take_photo.png';
         take_pic_btn.className += ' take_pic_class';
@@ -93,13 +93,13 @@ var app = {
 
         setTimeout(function() {
             CameraPreview.takePicture({quality: 100}, function(base64PictureData) {
+                cameraPreviewImg.src = 'data:image/jpeg;base64,' +base64PictureData;
+
                 take_pic_btn.setAttribute('style', 'display:none;');
                 appElement.setAttribute('style', 'display:block;');
                 document.body.classList.remove("cameraPreview");
 
-                imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
-                cameraPreviewImg.src = imageSrcData;
-                document.body.appendChild(cameraPreviewImg);
+                // imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
             });
         }, 3500);
 
