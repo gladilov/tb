@@ -93,6 +93,7 @@ var app = {
 
         setTimeout(function() {
             CameraPreview.takePicture({quality: 100}, function(base64PictureData) {
+                CameraPreview.stopCamera();
                 // cameraPreviewImg.src = 'data:image/jpeg;base64,' +base64PictureData;
                 document.getElementById('cameraPreviewImg').src = 'data:image/jpeg;base64,' + base64PictureData;
 
