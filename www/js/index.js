@@ -80,33 +80,20 @@ var app = {
 
 
         // Create a rectangle & buttons
-        // var rect = document.createElement('div');
         var take_pic_btn = document.createElement('img');
-        var flash_on_btn = document.createElement('img');
-        var flash_off_btn = document.createElement('img');
         // var cameraPreviewImg = document.createElement('img');
 
-        cameraPreviewImg.id = 'cameraPreviewImg';
+        // cameraPreviewImg.id = 'cameraPreviewImg';
 
         // You must specify path relative to www folder
         take_pic_btn.src = 'img/cameraPreview/take_photo.png';
-        flash_on_btn.src = 'img/cameraPreview/flash_on.svg';
-        flash_off_btn.src = 'img/cameraPreview/flash_off.svg';
 
         // Add styles
-        // rect.className += 'rect_class';
         take_pic_btn.className += ' take_pic_class';
-        flash_on_btn.className += ' flash_class flash_on';
-        flash_off_btn.className += ' flash_class flash_of';
-
-        // Hide flash_off btn by default
-        flash_off_btn.style.visibility = 'hidden';
 
         // Append to body section
         // document.body.appendChild(rect);
         document.body.appendChild(take_pic_btn);
-        document.body.appendChild(flash_on_btn);
-        document.body.appendChild(flash_off_btn);
 
         // Get rectangle coordinates
         // var rect_coords = rect.getBoundingClientRect();
@@ -124,108 +111,15 @@ var app = {
 
                 // One simple example is if you are going to use it inside an HTML img src attribute then you would do the following:
 
-                imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
-                cameraPreviewImg.src = imageSrcData;
-                document.body.appendChild(cameraPreviewImg);
-
-                rect.setAttribute('style', 'display:none;');
-                take_pic_btn.setAttribute('style', 'display:none;');
-                flash_on_btn.setAttribute('style', 'display:none;');
-                flash_off_btn.setAttribute('style', 'display:none;');
-                appElement.setAttribute('style', 'display:block;');
+                // imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
+                // cameraPreviewImg.src = imageSrcData;
+                // document.body.appendChild(cameraPreviewImg);
+                //
+                // take_pic_btn.setAttribute('style', 'display:none;');
+                // appElement.setAttribute('style', 'display:block;');
             });
+
+            CameraPreview.stopCamera();
         };
-
-        flash_on_btn.onclick = function() {
-            flash_mode = 'on';
-            flash_off_btn.style.visibility = 'visible';
-            flash_on_btn.style.visibility = 'hidden';
-
-            CameraPreview.setFlashMode(flash_mode);
-        }
-
-        flash_off_btn.onclick = function() {
-            flash_mode = 'off';
-            flash_off_btn.style.visibility = 'hidden';
-            flash_on_btn.style.visibility = 'visible';
-
-            CameraPreview.setFlashMode(flash_mode);
-        }
     }
 };
-
-    // Called when a photo is successfully retrieved
-    //
-    function onPhotoDataSuccess(imageData) {
-      // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
-
-	// Called when a photo is successfully retrieved
-    //
-    function onPhotoFileSuccess(imageData) {
-      // Get image handle
-      console.log(JSON.stringify(imageData));
-
-   	  // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      smallImage.src = imageData;
-    }
-    // Called when a photo is successfully retrieved
-    //
-    function onPhotoURISuccess(imageURI) {
-      // Uncomment to view the image file URI
-      // console.log(imageURI);
-      // Get image handle
-      //
-      var largeImage = document.getElementById('largeImage');
-      // Unhide image elements
-      //
-      largeImage.style.display = 'block';
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      largeImage.src = imageURI;
-    }
-    // A button will call this function
-    //
-    function capturePhotoWithData() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
-    }
-    function capturePhotoWithFile() {
-        navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
-    }
-
-    // A button will call this function
-    //
-    function getPhoto(source) {
-      // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-        destinationType: destinationType.FILE_URI,
-        sourceType: source });
-    }
-    // Called if something bad happens.
-    //
-    function onFail(message) {
-      alert('Failed because: ' + message);
-    }
-
-    function cameraPreview() {
-      app.cameraPreviewTest();
-    }
