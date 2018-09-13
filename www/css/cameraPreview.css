@@ -1,5 +1,14 @@
 /* cameraPreview.css */
 
+html {
+    background-color: transparent;
+}
+
+body.cameraPreview {
+    background-color: transparent;
+    background-image: none;
+}
+
 div.rect_class {
     width: 280px;
     height: 100px;
@@ -28,12 +37,20 @@ div.rect_class {
   	box-shadow: 0 0 500px 5000px rgba(0, 0, 0, 0.4);
 }
 
-img.flash_class {
+div.flash_class {
     /* Center horizontally */
     position: absolute; margin: auto;
 
     width: 55px; height: 55px;
     top: 20px; right: 20px;
+}
+div.flash_class.flash_on {
+    background:url(../img/cameraPreview/flash_on.svg) no-repeat center center;
+    background-size: contain;
+}
+div.flash_class.flash_off {
+    background:url(../img/cameraPreview/flash_off.svg) no-repeat center center;
+    background-size: contain;
 }
 
 img.take_pic_class {
@@ -42,4 +59,7 @@ img.take_pic_class {
 
     width: 75px; height: 75px;
     left: 0px; right: 0px; bottom: 20px;
+
+    background:url(../img/cameraPreview/take_photo.png) no-repeat center center;
+    background-size: contain;
 }

@@ -60,6 +60,7 @@ var app = {
     cameraPreviewTest: function() {
         var appElement = document.getElementById('app');
         appElement.setAttribute('style', 'display:none;');
+        document.body.classList.add("cameraPreview");
 
         var options = {
             x: 0,
@@ -80,23 +81,23 @@ var app = {
 
         // Create a rectangle & buttons
         var rect = document.createElement('div');
-        var take_pic_btn = document.createElement('img');
+        var take_pic_btn = document.createElement('div');
         var flash_on_btn = document.createElement('img');
         var flash_off_btn = document.createElement('img');
-        var cameraPreviewImg = document.createElement('img');
+        // var cameraPreviewImg = document.createElement('img');
 
         cameraPreviewImg.id = 'cameraPreviewImg';
 
         // You must specify path relative to www folder
-        take_pic_btn.src = '../img/cameraPreview/take_photo.png';
-        flash_on_btn.src = '../img/cameraPreview/flash_on.svg';
-        flash_off_btn.src = 'www/img/cameraPreview/flash_off.svg';
+        // take_pic_btn.src = 'img/cameraPreview/take_photo.png';
+        flash_on_btn.src = 'img/cameraPreview/flash_on.svg';
+        flash_off_btn.src = 'img/cameraPreview/flash_off.svg';
 
         // Add styles
         rect.className += 'rect_class';
         take_pic_btn.className += ' take_pic_class';
-        flash_on_btn.className += ' flash_class';
-        flash_off_btn.className += ' flash_class';
+        flash_on_btn.className += ' flash_class flash_on';
+        flash_off_btn.className += ' flash_class flash_of';
 
         // Hide flash_off btn by default
         flash_off_btn.style.visibility = 'hidden';
