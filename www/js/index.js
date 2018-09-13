@@ -60,8 +60,8 @@ var app = {
     cameraPreviewTest: function() {
         var appElement = document.getElementById('app');
         appElement.setAttribute('style', 'display:none;');
-        var cameraTestElement = document.getElementById('camera-test');
-        cameraTestElement.setAttribute('style', 'display:none;');
+        // var cameraTestElement = document.getElementById('camera-test');
+        // cameraTestElement.setAttribute('style', 'display:none;');
         document.body.classList.add("cameraPreview");
 
         var options = {
@@ -116,11 +116,12 @@ var app = {
 
                 take_pic_btn.setAttribute('style', 'display:none;');
                 appElement.setAttribute('style', 'display:block;');
-                cameraTestElement.setAttribute('style', 'display:block;');
+                document.body.classList.remove("cameraPreview");
+                // cameraTestElement.setAttribute('style', 'display:block;');
             });
 
             CameraPreview.stopCamera();
-            // CameraPreview.hide();
+            CameraPreview.hide();
         };
     }
 };
