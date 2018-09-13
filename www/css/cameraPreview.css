@@ -37,23 +37,23 @@ div.rect_class {
   	box-shadow: 0 0 500px 5000px rgba(0, 0, 0, 0.4);
 }
 
-div.flash_class {
+img.flash_class {
     /* Center horizontally */
     position: absolute; margin: auto;
 
     width: 55px; height: 55px;
     top: 20px; right: 20px;
 }
-div.flash_class.flash_on {
+img.flash_class.flash_on {
     background:url(../img/cameraPreview/flash_on.svg) no-repeat center center;
     background-size: contain;
 }
-div.flash_class.flash_off {
+img.flash_class.flash_off {
     background:url(../img/cameraPreview/flash_off.svg) no-repeat center center;
     background-size: contain;
 }
 
-img.take_pic_class {
+div.take_pic_class {
     /* Center horizontally */
     position: absolute; margin: auto;
 
@@ -62,4 +62,5 @@ img.take_pic_class {
 
     background:url(../img/cameraPreview/take_photo.png) no-repeat center center;
     background-size: contain;
+    z-index: 1000;
 }
