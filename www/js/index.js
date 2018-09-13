@@ -58,6 +58,9 @@ var app = {
     },
 
     cameraPreviewTest: function() {
+        var appElement = document.getElementById('app');
+        appElement.setAttribute('style', 'display:none;');
+
         var options = {
             x: 0,
             y: 0,
@@ -86,9 +89,9 @@ var app = {
         cameraPreviewImg.style.visibility = 'hidden';
 
         // You must specify path relative to www folder
-        take_pic_btn.src = 'img/take_photo.png';
-        flash_on_btn.src = 'img/flash_on.svg';
-        flash_off_btn.src = 'img/flash_off.svg';
+        take_pic_btn.src = 'img/cameraPreview/take_photo.png';
+        flash_on_btn.src = 'img/cameraPreview/flash_on.svg';
+        flash_off_btn.src = 'img/cameraPreview/flash_off.svg';
 
         // Add styles
         rect.className += 'rect_class';
@@ -124,10 +127,11 @@ var app = {
                 imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
                 cameraPreviewImg.src = imageSrcData;
 
-                rect.style.visibility = 'hidden';
-                take_pic_btn.style.visibility = 'hidden';
-                flash_on_btn.style.visibility = 'hidden';
-                flash_off_btn.style.visibility = 'hidden';
+                rect.setAttribute('style', 'display:none;');
+                take_pic_btn.setAttribute('style', 'display:none;');
+                flash_on_btn.setAttribute('style', 'display:none;');
+                flash_off_btn.setAttribute('style', 'display:none;');
+                appElement.setAttribute('style', 'display:block;');
             });
         };
 
