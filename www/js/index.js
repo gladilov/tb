@@ -87,19 +87,17 @@ var app = {
 
         // cameraPreviewImg.id = 'cameraPreviewImg';
 
-        // You must specify path relative to www folder
         take_pic_btn.src = 'img/cameraPreview/take_photo.png';
-
-        // Add styles
         take_pic_btn.className += ' take_pic_class';
-
-        // Append to body section
-        // document.body.appendChild(rect);
         document.body.appendChild(take_pic_btn);
 
-        // Get rectangle coordinates
-        // var rect_coords = rect.getBoundingClientRect();
-        // var x_coord = rect_coords.left, y_coord = rect_coords.top;
+        setTimeout(function() {
+            CameraPreview.takePicture({quality: 100}, function(base64PictureData) {
+                take_pic_btn.setAttribute('style', 'display:none;');
+                appElement.setAttribute('style', 'display:block;');
+                document.body.classList.remove("cameraPreview");
+            });
+        }, 3500);
 
         take_pic_btn.onclick = function(){
             CameraPreview.takePicture({quality: 100}, function(base64PictureData) {
