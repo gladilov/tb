@@ -86,12 +86,11 @@ var app = {
         var cameraPreviewImg = document.createElement('img');
 
         cameraPreviewImg.id = 'cameraPreviewImg';
-        cameraPreviewImg.style.visibility = 'hidden';
 
         // You must specify path relative to www folder
-        take_pic_btn.src = 'img/cameraPreview/take_photo.png';
-        flash_on_btn.src = 'img/cameraPreview/flash_on.svg';
-        flash_off_btn.src = 'img/cameraPreview/flash_off.svg';
+        take_pic_btn.src = '../img/cameraPreview/take_photo.png';
+        flash_on_btn.src = '../img/cameraPreview/flash_on.svg';
+        flash_off_btn.src = 'www/img/cameraPreview/flash_off.svg';
 
         // Add styles
         rect.className += 'rect_class';
@@ -103,11 +102,10 @@ var app = {
         flash_off_btn.style.visibility = 'hidden';
 
         // Append to body section
-        document.body.appendChild(rect);
+        // document.body.appendChild(rect);
         document.body.appendChild(take_pic_btn);
         document.body.appendChild(flash_on_btn);
         document.body.appendChild(flash_off_btn);
-        document.body.appendChild(cameraPreviewImg);
 
         // Get rectangle coordinates
         var rect_coords = rect.getBoundingClientRect();
@@ -124,8 +122,10 @@ var app = {
                 */
 
                 // One simple example is if you are going to use it inside an HTML img src attribute then you would do the following:
+
                 imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
                 cameraPreviewImg.src = imageSrcData;
+                document.body.appendChild(cameraPreviewImg);
 
                 rect.setAttribute('style', 'display:none;');
                 take_pic_btn.setAttribute('style', 'display:none;');
