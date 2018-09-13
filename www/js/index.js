@@ -71,7 +71,7 @@ var app = {
             height: window.screen.height,
             camera: CameraPreview.CAMERA_DIRECTION.FRONT,
             toBack: true,
-            tapPhoto: false,
+            tapPhoto: true,
             tapFocus: true,
             previewDrag: false
         };
@@ -102,7 +102,7 @@ var app = {
         // var x_coord = rect_coords.left, y_coord = rect_coords.top;
 
         take_pic_btn.onclick = function(){
-            CameraPreview.takePicture(function(base64PictureData) {
+            CameraPreview.takePicture({quality: 100}, function(base64PictureData) {
                 /*
                 base64PictureData is base64 encoded jpeg image. Use this data to store to a file or upload.
                 Its up to the you to figure out the best way to save it to disk or whatever for your application.
@@ -120,8 +120,8 @@ var app = {
                 // cameraTestElement.setAttribute('style', 'display:block;');
             });
 
-            CameraPreview.stopCamera();
-            CameraPreview.hide();
+            // CameraPreview.stopCamera();
+            // CameraPreview.hide();
         };
     }
 };
