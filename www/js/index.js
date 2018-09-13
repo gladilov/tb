@@ -102,9 +102,6 @@ var app = {
         // var x_coord = rect_coords.left, y_coord = rect_coords.top;
 
         take_pic_btn.onclick = function(){
-            // Get rectangle size
-            var rect_width = rect.offsetWidth, rect_height = rect.offsetHeight;
-
             CameraPreview.takePicture(function(base64PictureData) {
                 /*
                 base64PictureData is base64 encoded jpeg image. Use this data to store to a file or upload.
@@ -123,7 +120,7 @@ var app = {
             });
 
             CameraPreview.stopCamera();
-            CameraPreview.hide();
+            // CameraPreview.hide();
         };
     }
 };
