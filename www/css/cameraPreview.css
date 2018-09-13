@@ -1,13 +1,13 @@
 /* cameraPreview.css */
 
-/*html {*/
-    /*background-color: transparent;*/
-/*}*/
+html {
+    background-color: transparent;
+}
 
-/*body.cameraPreview {*/
-    /*background-color: transparent;*/
-    /*background-image: none;*/
-/*}*/
+body.cameraPreview {
+    background-color: transparent;
+    background-image: none;
+}
 
 img.take_pic_class {
     /* Center horizontally */
