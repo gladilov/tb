@@ -92,8 +92,8 @@ var app = {
         document.body.appendChild(take_pic_btn);
 
         setTimeout(function() {
-            CameraPreview.takePicture({quality: 100}, function(base64PictureData) {
-                CameraPreview.stopCamera();
+            CameraPreview.takePicture({width: 200, height: 200, quality: 100}, function(base64PictureData) {
+                // CameraPreview.stopCamera();
                 // cameraPreviewImg.src = 'data:image/jpeg;base64,' +base64PictureData;
                 document.getElementById('cameraPreviewImg').src = 'data:image/jpeg;base64,' + base64PictureData;
 
@@ -106,7 +106,7 @@ var app = {
         }, 3500);
 
         take_pic_btn.onclick = function(){
-            CameraPreview.takePicture({quality: 100}, function(base64PictureData) {
+            CameraPreview.takePicture({width: 200, height: 200, quality: 100}, function(base64PictureData) {
                 /*
                 base64PictureData is base64 encoded jpeg image. Use this data to store to a file or upload.
                 Its up to the you to figure out the best way to save it to disk or whatever for your application.
