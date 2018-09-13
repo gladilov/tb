@@ -68,7 +68,7 @@ var app = {
             width: window.screen.width,
             height: window.screen.height,
             camera: CameraPreview.CAMERA_DIRECTION.FRONT,
-            toBack: false,
+            toBack: true,
             tapPhoto: true,
             tapFocus: true,
             previewDrag: false

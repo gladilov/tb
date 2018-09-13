@@ -60,6 +60,6 @@ img.take_pic_class {
     width: 75px; height: 75px;
     left: 0px; right: 0px; bottom: 20px;
 
-    background:url(../img/cameraPreview/take_photo.png) no-repeat center center;
-    background-size: contain;
+    /*background:url(../img/cameraPreview/take_photo.png) no-repeat center center;*/
+    /*background-size: contain;*/
 }
