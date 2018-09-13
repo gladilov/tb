@@ -80,7 +80,7 @@ var app = {
 
 
         // Create a rectangle & buttons
-        var rect = document.createElement('div');
+        // var rect = document.createElement('div');
         var take_pic_btn = document.createElement('div');
         var flash_on_btn = document.createElement('img');
         var flash_off_btn = document.createElement('img');
@@ -94,7 +94,7 @@ var app = {
         flash_off_btn.src = 'img/cameraPreview/flash_off.svg';
 
         // Add styles
-        rect.className += 'rect_class';
+        // rect.className += 'rect_class';
         take_pic_btn.className += ' take_pic_class';
         flash_on_btn.className += ' flash_class flash_on';
         flash_off_btn.className += ' flash_class flash_of';
@@ -109,8 +109,8 @@ var app = {
         document.body.appendChild(flash_off_btn);
 
         // Get rectangle coordinates
-        var rect_coords = rect.getBoundingClientRect();
-        var x_coord = rect_coords.left, y_coord = rect_coords.top;
+        // var rect_coords = rect.getBoundingClientRect();
+        // var x_coord = rect_coords.left, y_coord = rect_coords.top;
 
         take_pic_btn.onclick = function(){
             // Get rectangle size
