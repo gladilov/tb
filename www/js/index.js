@@ -58,9 +58,9 @@ var app = {
     },
 
     cameraPreviewTest: function() {
-        // var appElement = document.getElementById('app');
-        // appElement.setAttribute('style', 'display:none;');
-        // document.body.classList.add("cameraPreview");
+        var appElement = document.getElementById('app');
+        appElement.setAttribute('style', 'display:none;');
+        document.body.classList.add("cameraPreview");
 
         var options = {
             x: 0,
