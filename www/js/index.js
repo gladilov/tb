@@ -81,7 +81,7 @@ var app = {
 
         // Create a rectangle & buttons
         // var rect = document.createElement('div');
-        var take_pic_btn = document.createElement('div');
+        var take_pic_btn = document.createElement('img');
         var flash_on_btn = document.createElement('img');
         var flash_off_btn = document.createElement('img');
         // var cameraPreviewImg = document.createElement('img');
@@ -89,7 +89,7 @@ var app = {
         cameraPreviewImg.id = 'cameraPreviewImg';
 
         // You must specify path relative to www folder
-        // take_pic_btn.src = 'img/cameraPreview/take_photo.png';
+        take_pic_btn.src = 'img/cameraPreview/take_photo.png';
         flash_on_btn.src = 'img/cameraPreview/flash_on.svg';
         flash_off_btn.src = 'img/cameraPreview/flash_off.svg';
 
