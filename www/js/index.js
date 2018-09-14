@@ -60,8 +60,6 @@ var app = {
     cameraPreviewTest: function() {
         var appElement = document.getElementById('app');
         appElement.setAttribute('style', 'display:none;');
-        // var cameraTestElement = document.getElementById('camera-test');
-        // cameraTestElement.setAttribute('style', 'display:none;');
         document.body.classList.add("cameraPreview");
 
         var options = {
@@ -93,13 +91,12 @@ var app = {
 
         setTimeout(function() {
             CameraPreview.takePicture({width: 200, height: 200, quality: 100}, function(base64PictureData) {
-                // CameraPreview.stopCamera();
-                // cameraPreviewImg.src = 'data:image/jpeg;base64,' +base64PictureData;
+                CameraPreview.stopCamera();
                 document.getElementById('cameraPreviewImg').src = 'data:image/jpeg;base64,' + base64PictureData;
 
-                take_pic_btn.setAttribute('style', 'display:none;');
-                appElement.setAttribute('style', 'display:block;');
-                document.body.classList.remove("cameraPreview");
+                // take_pic_btn.setAttribute('style', 'display:none;');
+                // appElement.setAttribute('style', 'display:block;');
+                // document.body.classList.remove("cameraPreview");
 
                 // imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
             });

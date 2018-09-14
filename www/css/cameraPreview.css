@@ -20,3 +20,7 @@ img.take_pic_class {
     /*background-size: contain;*/
     /*z-index: 1000;*/
 }
+
+#cameraPreviewImg {
+    min-width: 100%;
+}
