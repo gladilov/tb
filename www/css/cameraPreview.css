@@ -46,7 +46,7 @@ body.cameraPreview {
 }
 
 .on {
-    display: block;
-    animation:fade 1500ms infinite;
-    -webkit-animation:fade 1500ms infinite;
+    display: block!important;
+    animation:fade 1500ms;
+    -webkit-animation:fade 1500ms;
 }

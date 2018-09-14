@@ -80,17 +80,11 @@ var app = {
                 // take_pic_btn.setAttribute('style', 'display:none;');
                 // appElement.setAttribute('style', 'display:block;');
                 // document.body.classList.remove("cameraPreview");
-
-                // imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
-                
-                
             });
         }
 
         function photoFrameInit() {
-            // var photoFrame = document.createElement('div');
-            // photoFrame.classList.add("photo-frame");
-            document.getElementById('cameraPreviewImg').classList.add("on");
+            document.getElementById('photoFrame').classList.add("on");
         }
     }
 };
