@@ -75,7 +75,7 @@ var app = {
                 CameraPreview.stopCamera();
                 document.getElementById('cameraPreviewImg').src = 'data:image/jpeg;base64,' + base64PictureData;
 
-                var photoFrameTimerId = setTimeout(photoFrameInit, 2000);
+                var photoFrameTimerId = setTimeout(photoFrameInit, 1500);
 
                 // take_pic_btn.setAttribute('style', 'display:none;');
                 // appElement.setAttribute('style', 'display:block;');
