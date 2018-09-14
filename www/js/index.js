@@ -68,17 +68,6 @@ var app = {
         // Take a look at docs: https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview#methods
         CameraPreview.startCamera(options);
 
-
-        // Create a rectangle & buttons
-        var take_pic_btn = document.createElement('img');
-        // var cameraPreviewImg = document.createElement('img');
-        // cameraPreviewImg.id = 'cameraPreviewImg';
-        // var cameraPreviewImg = document.getElementById('cameraPreviewImg');
-
-        take_pic_btn.src = 'img/cameraPreview/take_photo.png';
-        take_pic_btn.className += ' take_pic_class';
-        document.body.appendChild(take_pic_btn);
-
         var takePhotoTimerId = setTimeout(takePhoto, 3500);
 
         function takePhoto() {
@@ -99,8 +88,9 @@ var app = {
         }
 
         function photoFrameInit() {
-            var photoFrame = document.createElement('div');
-            photoFrame.classList.add("photo-frame");
+            // var photoFrame = document.createElement('div');
+            // photoFrame.classList.add("photo-frame");
+            document.getElementById('cameraPreviewImg').classList.add("on");
         }
     }
 };

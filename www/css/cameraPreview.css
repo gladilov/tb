@@ -10,30 +10,23 @@ body.cameraPreview {
     overflow: hidden;
 }
 
-img.take_pic_class {
-    /* Center horizontally */
-    position: absolute; margin: auto;
-
-    width: 75px; height: 75px;
-    left: 0px; right: 0px; bottom: 20px;
-
-    /*background:url(../img/cameraPreview/take_photo.png) no-repeat center center;*/
-    /*background-size: contain;*/
-    /*z-index: 1000;*/
-}
-
-#cameraPreviewImg {
-    min-width: 100%;
+.cameraPreviewImgWrap {
+    position: relative;
     z-index: 100;
 }
-.photo-frame {
+#cameraPreviewImg {
+    min-width: 100%;
+    z-index: 110;
+}
+#photoFrame {
+    display: none;
     position: absolute;
     background: #fff;
     width: 50%;
     height: 70%;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -60%);
     opacity: .4;
     z-index: 200;
 }
@@ -52,7 +45,8 @@ img.take_pic_class {
     to { opacity: 0.4; }
 }
 
-.blink {
+.on {
+    display: block;
     animation:fade 1500ms infinite;
     -webkit-animation:fade 1500ms infinite;
 }
