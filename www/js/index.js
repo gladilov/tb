@@ -16,8 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var pictureSource;   // picture source
-var destinationType; // sets the format of returned value
 
 var app = {
     // Application Constructor
@@ -37,13 +35,6 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-
-        // camera test
-        pictureSource = navigator.camera.PictureSourceType;
-        destinationType = navigator.camera.DestinationType;
-
-        // camera preview test
-        // app.cameraPreviewTest();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -74,7 +65,6 @@ var app = {
             previewDrag: false
         };
 
-        var flash_mode = 'off';
         // Take a look at docs: https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview#methods
         CameraPreview.startCamera(options);
 
@@ -89,40 +79,28 @@ var app = {
         take_pic_btn.className += ' take_pic_class';
         document.body.appendChild(take_pic_btn);
 
-        setTimeout(function() {
+        var takePhotoTimerId = setTimeout(takePhoto, 3500);
+
+        function takePhoto() {
             CameraPreview.takePicture({width: 200, height: 200, quality: 100}, function(base64PictureData) {
                 CameraPreview.stopCamera();
                 document.getElementById('cameraPreviewImg').src = 'data:image/jpeg;base64,' + base64PictureData;
+
+                var photoFrameTimerId = setTimeout(photoFrameInit, 2000);
 
                 // take_pic_btn.setAttribute('style', 'display:none;');
                 // appElement.setAttribute('style', 'display:block;');
                 // document.body.classList.remove("cameraPreview");
 
                 // imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
+                
+                
             });
-        }, 3500);
+        }
 
-        take_pic_btn.onclick = function(){
-            CameraPreview.takePicture({width: 200, height: 200, quality: 100}, function(base64PictureData) {
-                /*
-                base64PictureData is base64 encoded jpeg image. Use this data to store to a file or upload.
-                Its up to the you to figure out the best way to save it to disk or whatever for your application.
-                */
-
-                // One simple example is if you are going to use it inside an HTML img src attribute then you would do the following:
-
-                // imageSrcData = 'data:image/jpeg;base64,' +base64PictureData;
-                // cameraPreviewImg.src = imageSrcData;
-                // document.body.appendChild(cameraPreviewImg);
-
-                take_pic_btn.setAttribute('style', 'display:none;');
-                appElement.setAttribute('style', 'display:block;');
-                document.body.classList.remove("cameraPreview");
-                // cameraTestElement.setAttribute('style', 'display:block;');
-            });
-
-            // CameraPreview.stopCamera();
-            // CameraPreview.hide();
-        };
+        function photoFrameInit() {
+            var photoFrame = document.createElement('div');
+            photoFrame.classList.add("photo-frame");
+        }
     }
 };
