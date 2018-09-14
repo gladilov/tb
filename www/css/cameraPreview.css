@@ -10,7 +10,7 @@ body.cameraPreview {
     overflow: hidden;
 }
 
-.cameraPreviewImgWrap {
+#cameraPreviewImgWrap {
     position: relative;
     z-index: 100;
 }
@@ -23,7 +23,7 @@ body.cameraPreview {
     position: absolute;
     background: #fff;
     width: 65%;
-    height: 60%;
+    height: 50%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -55%);
