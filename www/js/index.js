@@ -59,6 +59,7 @@ var app = {
         var appElement = document.getElementById('app');
         appElement.setAttribute('style', 'display:none;');
         document.body.classList.add("cameraPreview");
+        if (device) document.body.classList.add("fixBackground");
 
         var options = {
             x: 0,
@@ -82,6 +83,7 @@ var app = {
             if (device) {
                 CameraPreview.takePicture({width: 200, height: 200, quality: 100}, function(base64PictureData) {
                     CameraPreview.stopCamera();
+                    if (device) document.body.classList.remove("fixBackground");
                     document.getElementById('cameraPreviewImg').src = 'data:image/jpeg;base64,' + base64PictureData;
 
                     photoFrameTimerId = setTimeout(photoFrameInit, 1500);

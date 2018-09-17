@@ -9,6 +9,9 @@ body.cameraPreview {
     background-image: none;
     overflow: hidden;
 }
+body.fixBackground {
+    background-color: transparent!important;
+}
 
 #camera-test {
     margin-top: 15px;
