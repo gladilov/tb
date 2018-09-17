@@ -50,6 +50,11 @@ var app = {
     },
 
     cameraPreviewTest: function() {
+        if (device) {
+            StatusBar.hide();
+            AndroidFullScreen.immersiveMode(function () { }, function () { });
+        }
+
         var takePhotoTimerId, photoFrameTimerId, previewImgSizeTimerId, previewImgSizeChangeTimerId, text1TimerId, text2TimerId;
         var appElement = document.getElementById('app');
         appElement.setAttribute('style', 'display:none;');
@@ -75,7 +80,6 @@ var app = {
         function takePhoto() {
             textInit();
             if (device) {
-                StatusBar.hide();
                 CameraPreview.takePicture({width: 200, height: 200, quality: 100}, function(base64PictureData) {
                     CameraPreview.stopCamera();
                     document.getElementById('cameraPreviewImg').src = 'data:image/jpeg;base64,' + base64PictureData;
@@ -100,6 +104,7 @@ var app = {
             document.getElementById('photoFrame').classList.remove("on");
             previewImgSizeChangeTimerId = setTimeout(function () {
                 document.getElementById('cameraPreviewImg').classList.add("size-change");
+                // document.body.setAttribute('style', 'background-color:#fff;');
             }, 10);
             text1TimerId = setTimeout(function () {
                 document.getElementById('text_1').setAttribute('style', 'opacity:1;');
