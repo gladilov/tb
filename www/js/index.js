@@ -135,6 +135,7 @@ var app = {
             document.getElementById('cameraPreviewImg').classList.remove("size-change");
             document.getElementById('text_1').setAttribute('style', 'opacity:0;');
             document.getElementById('text_2').setAttribute('style', 'opacity:0;');
+            document.getElementById('text_3').setAttribute('style', 'opacity:0;');
 
             clearTimeout(takePhotoTimerId);
             clearTimeout(photoFrameTimerId);
