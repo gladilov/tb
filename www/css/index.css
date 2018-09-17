@@ -145,6 +145,7 @@ h1 {
     background-color: #1ab394;
     border-color: #1ab394;
     color: #fff;
+    outline: 0;
 }
 
 .btn:active {
