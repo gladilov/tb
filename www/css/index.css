@@ -18,6 +18,7 @@
  */
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    box-sizing: border-box;
 }
 html {
     height: 100vh;
@@ -61,6 +62,8 @@ body {
     padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
     margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
+    position: relative;
+    z-index: 300;
 }
 
 /* Landscape layout (with min-width) */
@@ -116,4 +119,63 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+
+    background-color: #1ab394;
+    border-color: #1ab394;
+    color: #fff;
+}
+
+.btn:active {
+    outline: 0;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    background-color: #18a689;
+    border-color: #18a689;
+}
+
+.form-control {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #aaa;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 6px 12px;
+    transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;
+    width: 100%;
+}
+.form-control:focus {
+    border-color: #1ab394!important;
+    outline: 0;
+}
+label {
+    font-family: open sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+    text-transform: none;
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 600;
 }

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+var device = true;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -27,7 +27,8 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        if (device) document.addEventListener('deviceready', this.onDeviceReady, false);
+        else this.onDeviceReady();
     },
     // deviceready Event Handler
     //
@@ -49,6 +50,7 @@ var app = {
     },
 
     cameraPreviewTest: function() {
+        var takePhotoTimerId, photoFrameTimerId, previewImgSizeTimerId, previewImgSizeChangeTimerId, text1TimerId, text2TimerId;
         var appElement = document.getElementById('app');
         appElement.setAttribute('style', 'display:none;');
         document.body.classList.add("cameraPreview");
@@ -58,7 +60,7 @@ var app = {
             y: 0,
             width: window.screen.width,
             height: window.screen.height,
-            camera: CameraPreview.CAMERA_DIRECTION.FRONT,
+            camera: device ? CameraPreview.CAMERA_DIRECTION.FRONT : null,
             toBack: true,
             tapPhoto: false,
             tapFocus: true,
@@ -66,25 +68,86 @@ var app = {
         };
 
         // Take a look at docs: https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview#methods
-        CameraPreview.startCamera(options);
+        if (device) CameraPreview.startCamera(options);
 
-        var takePhotoTimerId = setTimeout(takePhoto, 3500);
+        takePhotoTimerId = setTimeout(takePhoto, 3500);
 
         function takePhoto() {
-            CameraPreview.takePicture({width: 200, height: 200, quality: 100}, function(base64PictureData) {
-                CameraPreview.stopCamera();
-                document.getElementById('cameraPreviewImg').src = 'data:image/jpeg;base64,' + base64PictureData;
+            textInit();
+            if (device) {
+                CameraPreview.takePicture({width: 200, height: 200, quality: 100}, function(base64PictureData) {
+                    CameraPreview.stopCamera();
+                    document.getElementById('cameraPreviewImg').src = 'data:image/jpeg;base64,' + base64PictureData;
 
-                var photoFrameTimerId = setTimeout(photoFrameInit, 1500);
+                    photoFrameTimerId = setTimeout(photoFrameInit, 1500);
+                    previewImgSizeTimerId = setTimeout(previewImgSize, 3000);
+                });
+            }
+            else {
+                document.getElementById('cameraPreviewImg').src = 'res/screen/android/drawable-port-xxxhdpi-screen.png';
 
-                // take_pic_btn.setAttribute('style', 'display:none;');
-                // appElement.setAttribute('style', 'display:block;');
-                // document.body.classList.remove("cameraPreview");
-            });
+                photoFrameTimerId = setTimeout(photoFrameInit, 1500);
+                previewImgSizeTimerId = setTimeout(previewImgSize, 3000);
+            }
         }
 
         function photoFrameInit() {
             document.getElementById('photoFrame').classList.add("on");
         }
+
+        function previewImgSize() {
+            document.getElementById('photoFrame').classList.remove("on");
+            previewImgSizeChangeTimerId = setTimeout(function () {
+                document.getElementById('cameraPreviewImg').classList.add("size-change");
+            }, 10);
+            text1TimerId = setTimeout(function () {
+                document.getElementById('text_1').setAttribute('style', 'opacity:1;');
+            }, 450);
+            text2TimerId = setTimeout(function () {
+                var coord = app.getCoords(document.getElementById('cameraPreviewImg'));
+                var date = new Date();
+                var hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+                var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+                document.getElementById('text_2_time').textContent = hours + ':' + minutes;
+                document.getElementById('text_2').setAttribute('style', 'top:' + coord.bottom +'px; opacity:1;');
+            }, 2000);
+        }
+
+        function textInit() {
+            // text_1
+            var employeeName = document.getElementById('employee-name-param').value;
+            if (employeeName !== '') {
+                document.getElementById('employee-name').textContent = employeeName;
+            }
+        }
+
+        document.getElementById('back-btn').addEventListener("click", back);
+
+        function back() {
+            appElement.setAttribute('style', 'display:block;');
+            document.body.classList.remove("cameraPreview");
+            document.getElementById('cameraPreviewImg').src = '';
+            document.getElementById('photoFrame').classList.remove("on");
+            document.getElementById('cameraPreviewImg').classList.remove("size-change");
+            document.getElementById('text_1').setAttribute('style', 'opacity:0;');
+            document.getElementById('text_2').setAttribute('style', 'opacity:0;');
+
+            clearTimeout(takePhotoTimerId);
+            clearTimeout(photoFrameTimerId);
+            clearTimeout(previewImgSizeTimerId);
+            clearTimeout(previewImgSizeChangeTimerId);
+            clearTimeout(text1TimerId);
+            clearTimeout(text2TimerId);
+        }
+    },
+
+    getCoords: function(elem) {
+        var box = elem.getBoundingClientRect();
+
+        return {
+            top: box.top + pageYOffset,
+            left: box.left + pageXOffset,
+            bottom: elem.offsetHeight + (box.top + pageYOffset)
+      };
     }
 };

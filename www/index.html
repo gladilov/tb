@@ -54,19 +54,22 @@
             <p class="event received">Device is Ready</p>
         </div>
         <div id="camera-test">
-            <button onclick="app.cameraPreviewTest();">Camera preview</button><br>
-            <!--<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />-->
-            <!--<img style="display:none;" id="largeImage" src="" />-->
+            <button class="btn" onclick="app.cameraPreviewTest();">Camera preview</button><br><br>
+            <label for="employee-name-param">Сотрудник:</label>
+            <input type="text" id="employee-name-param" class="form-control" />
         </div>
     </div>
 
     <div id="cameraPreviewImgWrap">
         <div id="photoFrame"></div>
-        <img id="cameraPreviewImg" width="100%">
+        <img id="cameraPreviewImg" />
+        <p id="text_1" class="text"><span id="employee-name" style="font-weight: 700;">Имярек Инкогнито</span>, добрый день!</p>
+        <p id="text_2" class="text">Смена открыта <span id="text_2_time">чч:мм</span></p>
+        <div id="back-btn"></div>
     </div>
 
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="CameraPreview.js"></script>
+    <!--<script type="text/javascript" src="CameraPreview.js"></script>-->
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();

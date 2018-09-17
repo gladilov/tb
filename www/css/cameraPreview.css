@@ -10,13 +10,28 @@ body.cameraPreview {
     overflow: hidden;
 }
 
+#camera-test {
+    margin-top: 15px;
+}
+
 #cameraPreviewImgWrap {
-    position: relative;
+    position: absolute;
     z-index: 100;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
 }
 #cameraPreviewImg {
-    min-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
     z-index: 110;
+    -webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+            transition: all .5s;
 }
 #photoFrame {
     display: none;
@@ -31,13 +46,17 @@ body.cameraPreview {
     z-index: 200;
 }
 
+.on {
+    display: block!important;
+    -webkit-animation:fade 1000ms;
+            animation:fade 1000ms;
+}
 @keyframes fade {
     from { opacity: 0.0; }
     30% { opacity: 0.3; }
     60% { opacity: 0.1; }
     to { opacity: 0.4; }
 }
-
 @-webkit-keyframes fade {
     from { opacity: 0.0; }
     30% { opacity: 0.3; }
@@ -45,8 +64,53 @@ body.cameraPreview {
     to { opacity: 0.4; }
 }
 
-.on {
-    display: block!important;
-    animation:fade 1500ms;
-    -webkit-animation:fade 1500ms;
+.size-change {
+    width: 60%!important;
+    top: 10%!important;
+    /*-webkit-animation:size 500ms;*/
+            /*animation:size 500ms;*/
+}
+@keyframes size {
+    from { width: 100%; margin-top: 0; }
+    to { width: 60%; margin-top: 10%; }
+}
+@-webkit-keyframes size {
+    from { width: 100%; margin-top: 0; }
+    to { width: 60%; margin-top: 10%; }
+}
+
+.text {
+    opacity: 0;
+    font-family: open sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #676a6c;
+    text-align: center;
+    text-transform: none;
+    -webkit-transition: opacity .15s; /* For Safari 3.1 to 6.0 */
+            transition: opacity .15s;
+}
+#text_1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+#text_2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+#text_2_time {
+    font-weight: 700;
+}
+
+#back-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    z-index: 400;
 }
