@@ -113,10 +113,6 @@ var app = {
             }, 450);
             text2TimerId = setTimeout(function () {
                 var coord = app.getCoords(document.getElementById('cameraPreviewImg'));
-                var date = new Date();
-                var hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
-                var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-                document.getElementById('text_2_time').textContent = hours + ':' + minutes;
                 document.getElementById('text_2').setAttribute('style', 'top:' + coord.bottom +'px; opacity:1;');
             }, 2000);
         }
@@ -147,6 +143,15 @@ var app = {
             clearTimeout(text1TimerId);
             clearTimeout(text2TimerId);
         }
+    },
+
+    text3Show: function() {
+        var coord = app.getCoords(document.getElementById('text_2'));
+        var date = new Date();
+        var hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+        var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+        document.getElementById('text_3_time').textContent = hours + ':' + minutes;
+        document.getElementById('text_3').setAttribute('style', 'top:' + coord.bottom +'px; opacity:1;');
     },
 
     getCoords: function(elem) {
