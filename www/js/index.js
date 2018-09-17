@@ -75,6 +75,7 @@ var app = {
         function takePhoto() {
             textInit();
             if (device) {
+                StatusBar.hide();
                 CameraPreview.takePicture({width: 200, height: 200, quality: 100}, function(base64PictureData) {
                     CameraPreview.stopCamera();
                     document.getElementById('cameraPreviewImg').src = 'data:image/jpeg;base64,' + base64PictureData;
