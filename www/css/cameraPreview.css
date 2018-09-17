@@ -5,7 +5,7 @@ html {
 }
 
 body.cameraPreview {
-    background-color: transparent;
+    background-color: #FFFFFF;
     background-image: none;
     overflow: hidden;
 }
