@@ -23,7 +23,7 @@
     <preference name="DisallowOverscroll"         value="true" />
     <preference name="Fullscreen"                 value="true" />
     <preference name="Orientation"                value="portrait" />
-    <preference name="BackgroundColor"            value="0xffffffff" />
+    <!--<preference name="BackgroundColor"            value="0xffffffff" />-->
 
     <!-- Define a specific version of PhoneGap to build into your app. -->
      <preference name="phonegap-version"          value="cli-8.0.0" />
