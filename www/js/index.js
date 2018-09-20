@@ -76,7 +76,7 @@ var app = {
         // Take a look at docs: https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview#methods
         if (device) CameraPreview.startCamera(options);
 
-        takePhotoTimerId = setTimeout(takePhoto, 3500);
+        takePhotoTimerId = setTimeout(takePhoto, 10000);
 
         function takePhoto() {
             textInit();
