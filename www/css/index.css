@@ -52,51 +52,58 @@ body {
 
 /* Portrait layout (default) */
 #app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    /*background:url(../img/logo.png) no-repeat center top; !* 170px x 200px *!*/
     position:absolute;             /* position in the center of the screen */
     left:50%;
     top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
+    /*height:50px;                   !* text area height *!*/
+    width:50vw;                   /* text area width */
     text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    /*padding:180px 0px 0px 0px;     !* image height is 200px (bottom 20px are overlapped with text) *!*/
+    /*margin:-115px 0px 0px -112px;  !* offset vertical: half of image height and text area height *!*/
                                    /* offset horizontal: half of text area width */
+    transform: translate(-50%, -70%);
     position: relative;
     z-index: 300;
 }
 
 /* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    #app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
-}
+/*@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {*/
+    /*#app {*/
+        /*background-position:left center;*/
+        /*padding:75px 0px 75px 170px;  !* padding-top + padding-bottom + text area = image height *!*/
+        /*margin:-90px 0px 0px -198px;  !* offset vertical: half of image height *!*/
+                                      /*!* offset horizontal: half of image width and text area width *!*/
+    /*}*/
+/*}*/
 
 h1 {
-    font-size:24px;
+    font-size:7vw;
     font-weight:normal;
     margin:0px;
     overflow:visible;
     padding:0px;
     text-align:center;
+    text-transform: none;
+    color: #333;
+}
+
+#deviceready {
+    margin-top: 1vh;
 }
 
 .event {
     border-radius:4px;
     -webkit-border-radius:4px;
     color:#FFFFFF;
-    font-size:12px;
-    margin:0px 30px;
-    padding:2px 0px;
+    font-size:1.8vw;
+    margin:0;
+    padding: 0.6vw 1.4vw;
 }
 
 .event.listening {
     background-color:#333333;
-    display:block;
+    display:inline-block;
 }
 
 .event.received {
@@ -123,9 +130,9 @@ h1 {
 
 .btn {
     display: inline-block;
-    padding: 6px 12px;
+    padding: 1vw 6vw;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 2.8vw;
     font-weight: 400;
     line-height: 1.42857143;
     text-align: center;
@@ -160,11 +167,13 @@ h1 {
     background-image: none;
     border: 1px solid #aaa;
     border-radius: 1px;
-    color: inherit;
+    color: #676a6c;
     display: block;
-    padding: 6px 12px;
+    padding: 1.2vw;
     transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;
     width: 100%;
+    font-family: open sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 2.8vw;
 }
 .form-control:focus {
     border-color: #1ab394!important;
@@ -172,11 +181,11 @@ h1 {
 }
 label {
     font-family: open sans,Helvetica Neue,Helvetica,Arial,sans-serif;
-    font-size: 14px;
+    font-size: 2.8vw;
     color: #333;
     text-align: left;
     text-transform: none;
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     font-weight: 600;
 }

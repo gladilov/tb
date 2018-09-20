@@ -48,15 +48,17 @@
 
 <body>
     <div id="app">
-        <h1>PhoneGap</h1>
+        <h1>timebook</h1>
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
         </div>
         <div id="camera-test">
-            <button class="btn" onclick="app.cameraPreviewTest();">Camera preview</button><br><br>
-            <label for="employee-name-param">Сотрудник:</label>
-            <input type="text" id="employee-name-param" class="form-control" />
+            <button class="btn" onclick="app.cameraPreviewTest();">Camera preview</button>
+            <div class="employee-name-wrap">
+                <label for="employee-name-param">Сотрудник:</label>
+                <input type="text" id="employee-name-param" class="form-control" />
+            </div>
         </div>
     </div>
 
