@@ -69,7 +69,7 @@ body.fixBackground {
 
 .size-change {
     width: 60%!important;
-    top: 10vw!important;
+    top: 13vw!important;
     /*-webkit-animation:size 500ms;*/
             /*animation:size 500ms;*/
 }
@@ -107,6 +107,10 @@ body.fixBackground {
 }
 #text_2_time {
     font-weight: 700;
+}
+.text_big {
+    font-size: 4vw;
+    margin: 3.5vw 0;
 }
 
 #back-btn {
