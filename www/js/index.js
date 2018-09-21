@@ -146,6 +146,26 @@ var app = {
         }
     },
 
+    cameraCaptureTest: function () {
+        var options = {
+            limit: 3
+        };
+        navigator.device.capture.captureImage(onSuccess, onError, options);
+
+        function onSuccess(mediaFiles) {
+            var i, path, len;
+            for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+                path = mediaFiles[i].fullPath;
+                console.log(mediaFiles);
+            }
+            navigator.notification.alert('Capture Success');
+        }
+
+        function onError(error) {
+            navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+        }
+    },
+
     text3Show: function() {
         var coord = app.getCoords(document.getElementById('text_2'));
         var date = new Date();
