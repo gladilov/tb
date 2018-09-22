@@ -36,6 +36,16 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+
+        // pendingcaptureresult is fired if the capture call is successful
+        document.addEventListener('pendingcaptureresult', function(mediaFiles) {
+            navigator.notification.alert('Capture Success');
+        });
+
+        // pendingcaptureerror is fired if the capture call is unsuccessful
+        document.addEventListener('pendingcaptureerror', function(error) {
+            navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+        });
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
